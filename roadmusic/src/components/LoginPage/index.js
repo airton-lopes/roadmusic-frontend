@@ -18,22 +18,6 @@ function LoginPage() {
     emailOrNickname: "",
     password: ""
     });
-
-    // const handleLogIn = (e) => {
-    // e.preventDefault()
-    // const body = {
-    //     emailOrNickname: form.emailOrNickname,
-    //     password: form.password
-    // }
-
-    // axios.post(`${baseUrl}/user/login`, body)
-    // .then(response => {
-    //     window.localStorage.setItem("token", response.data.token)
-    //     history.push("/signup")
-    // }).catch(err => {
-    //     console.log('ERRO')
-    // })
-    // }
     
     const handleLogIn = async (e) => {
         e.preventDefault()
