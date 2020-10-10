@@ -27,7 +27,7 @@ function LoginPage() {
         password: form.password
     }
         const response = await axios.post(`${baseUrl}/user/login`, body)
-        window.localStorage.setItem("token", response.data.token)
+        window.localStorage.setItem("accessToken", response.data.accessToken)
         history.push("/signup")
         } catch (err) {
         console.log(err)

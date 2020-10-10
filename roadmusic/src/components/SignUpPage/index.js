@@ -1,12 +1,12 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import axios from 'axios';
 import { baseUrl } from '../../constants';
 import { Button, TextField, Typography } from '@material-ui/core';
 
 function SignUpPage() {
-    const history = useHistory();
+    // const history = useHistory();
     const { form, onChange } = useForm({
         name: "",
         email: "",
@@ -14,22 +14,22 @@ function SignUpPage() {
         password: ""
     });
 
-    const handleSignUp = (e) => {
-    e.preventDefault()
-    const body = {
-        name: form.name,
-        email: form.email,
-        nickname: form.nickname,
-        password: form.password
+    const handleSignUp = async (e) => {
+        e.preventDefault()
+        try {
+        const body = {
+            name: form.name,
+            email: form.email,
+            nickname: form.nickname,
+            password: form.password
     }
-
-    axios.post(`${baseUrl}/user/signup`, body)
-    .then(response => {
-        window.localStorage.setItem("token", response.data.token)
-        history.push("/posts")
-    }).catch(err => {
-        console.log(err.message)
-    })
+        const response = await axios.post(`${baseUrl}/user/signup`, body)
+        window.localStorage.setItem("accessToken", response.data.accessToken)
+        // history.push("/signup")
+        console.log('cadastrou!')
+        } catch (err) {
+        console.log(err)
+        }
     }
 
     const handleInputChange = event => {
@@ -45,7 +45,7 @@ function SignUpPage() {
                 variant="outlined"
                 margin="normal"
                 required
-                id="user"
+                id="name"
                 label="Digite um nome de usuario"
                 name="name"
                 type="text"
