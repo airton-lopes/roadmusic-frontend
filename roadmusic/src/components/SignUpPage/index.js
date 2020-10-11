@@ -16,22 +16,21 @@ const SignUpPage = () =>{
     password: ""
     });
 
-    const handleSignUp = (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault()
+        try {
         const body = {
             name: form.name,
             email: form.email,
             nickname: form.nickname,
             password: form.password
-    }
-
-    axios.post(`${baseUrl}/user/signup`, body)
-        .then(response => {
+        }
+        const response = await axios.post(`${baseUrl}/user/signup`, body)
         window.localStorage.setItem("accessToken", response.data.accessToken)
         history.push("/home")
-        }).catch(err => {
-        console.log(err.message)
-        })
+        } catch (error) {
+        console.log(error.message)
+        }
     }
 
     const handleInputChange = event => {

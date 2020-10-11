@@ -28,7 +28,7 @@ function LoginPage() {
     }
         const response = await axios.post(`${baseUrl}/user/login`, body)
         window.localStorage.setItem("accessToken", response.data.accessToken)
-        history.push("/signup")
+        history.push("/home")
         } catch (err) {
         console.log(err)
         }
