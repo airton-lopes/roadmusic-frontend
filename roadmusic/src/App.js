@@ -6,6 +6,7 @@ import { CssBaseline } from "@material-ui/core";
 
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
+import HomePage from './components/HomePage';
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route exact path="/signup">
           <SignUpPage />
+        </Route>
+        <Route exact path="/home">
+          <HomePage />
         </Route>
         <Route path="/">
           <div>Opa! 404!</div>
